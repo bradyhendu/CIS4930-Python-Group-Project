@@ -29,13 +29,13 @@
             }
         },
         {
-            "diet": "paleo",
+            "diet": "regular",
             "nutritional_goals": {
                 "calories": 2200,
-                "protein": 100,
+                "protein": 70,
                 "carbs": 150,
-                "fat": 80
+                "fat": 100
             }
         }
-    ]
+    ]   
 }
