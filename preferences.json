@@ -1,0 +1,41 @@
+{
+    "user_preferences": [
+        {
+            "diet": "vegetarian",
+            "nutritional_goals": {
+                "calories": 2000,
+                "protein": 50,
+                "carbs": 250,
+                "fat": 65
+            }
+        },
+        {
+            "diet": "vegan",
+            "nutritional_goals": {
+                "calories": 1800,
+                "protein": 60,
+                "carbs": 220,
+                "fat": 60,
+                "fiber": 30
+            }
+        },
+        {
+            "diet": "keto",
+            "nutritional_goals": {
+                "calories": 1500,
+                "protein": 75,
+                "carbs": 50,
+                "fat": 100
+            }
+        },
+        {
+            "diet": "paleo",
+            "nutritional_goals": {
+                "calories": 2200,
+                "protein": 100,
+                "carbs": 150,
+                "fat": 80
+            }
+        }
+    ]
+}
