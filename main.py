@@ -44,7 +44,6 @@ if __name__ == '__main__':
     
     #Creates a shopping list based on the recommended recipes and available ingredients
     shopping_list = create_shopping_list(recommened_recipies, ingredient_list)
-    print(shopping_list)
     
     #Writes the meal plan and shopping list to a single output file
     write_output(meal_plan, shopping_list, "output.txt")
