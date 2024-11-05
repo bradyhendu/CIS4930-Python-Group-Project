@@ -15,6 +15,21 @@ recipes = {
     "Spaghetti Bolognese": {"ingredients": {"pasta": 100, "beef": 100}, "diet": "non-vegetarian"},
 }
 
+recipe_nutrition = {
+    "Pasta": {"calories": 350, "protein": 12, "carbs": 60, "fat": 5, "fiber": 4},
+    "Chicken Salad": {"calories": 250, "protein": 30, "carbs": 10, "fat": 10, "fiber": 3},
+    "Fruit Smoothie": {"calories": 200, "protein": 6, "carbs": 40, "fat": 5, "fiber": 4},
+    "Chicken Curry": {"calories": 400, "protein": 35, "carbs": 20, "fat": 15, "fiber": 5},
+    "Vegetable Stir Fry": {"calories": 150, "protein": 5, "carbs": 20, "fat": 5, "fiber": 6},
+    "Beef Stew": {"calories": 500, "protein": 40, "carbs": 30, "fat": 20, "fiber": 4},
+    "Pancakes": {"calories": 300, "protein": 8, "carbs": 50, "fat": 10, "fiber": 2},
+    "Omelette": {"calories": 250, "protein": 18, "carbs": 2, "fat": 20, "fiber": 0},
+    "Rice and Beans": {"calories": 350, "protein": 12, "carbs": 60, "fat": 5, "fiber": 10},
+    "Tuna Sandwich": {"calories": 400, "protein": 25, "carbs": 40, "fat": 15, "fiber": 3},
+    "Grilled Cheese": {"calories": 300, "protein": 12, "carbs": 30, "fat": 15, "fiber": 2},
+    "Spaghetti Bolognese": {"calories": 450, "protein": 25, "carbs": 50, "fat": 15, "fiber": 5},
+}
+
 """
 Recommend recipes based on available ingredients and user preferences.
 
