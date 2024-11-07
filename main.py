@@ -6,15 +6,14 @@ from visualize import visualize_nutrition
 #outside imports
 #import matplotlib.pyplot as plt
 
-def create_meal_plan(recommended_recipes, user_preferences):
+def create_meal_plan(recommended_recipes, user_diet):
     # Creates a meal plan based on the recommended recipes and user preferences
     meal_plan = {"Monday":[], "Tuesday":[], "Wednesday":[], "Thursday":[], "Friday":[], "Saturday":[], "Sunday":[]}
    
-    # for recipe in recommended_recipes:
-    #     print(recipe)
+    print(user_diet)
+    for recipe in recommended_recipes:
+        print(recipe)
         
-    # print(user_preferences)
-    
     for day in meal_plan.keys():
         meal_plan[day] = ["Add recipes here with algorithm"]
     
@@ -43,15 +42,20 @@ def create_shopping_list(recommended_recipes, available_ingredients):
 
 
 if __name__ == '__main__':
+    
     # Read the ingredients and preferences from the input files
     ingredient_list = input.read_ingredients("ingredients.csv")
     preference_list = input.read_preferences("preferences.json")
     
     # Recommend recipes based on the available ingredients and user preferences
-    recommended_recipes = recommend_recipes(ingredient_list, preference_list)
+    recommended_recipes = recommend_recipes(ingredient_list, user_chosen_diet)
+    
+    # TODO: enter and fix above function, and then uncomment below function call 
+    # recommended_recipes, user_chosen_diet = recommend_recipes(ingredient_list, user_chosen_diet)
+    
     
     #Creates a meal plan based on the recommended recipes and user preferences
-    meal_plan = create_meal_plan(recommended_recipes, preference_list)
+    meal_plan = create_meal_plan(recommended_recipes, user_chosen_diet)
     
     #Creates a shopping list based on the recommended recipes and available ingredients
     shopping_list = create_shopping_list(recommended_recipes, ingredient_list)

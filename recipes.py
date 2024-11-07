@@ -48,6 +48,11 @@ The function works as follows:
     5. If the number of matching ingredients is at least half of the total ingredients in the recipe and the recipe's diet matches the user's diet preferences, the recipe is added to the recommended list.
 """
 def recommend_recipes(available_ingredients, user_preferences):
+     
+    # TODO: switch "user_preferences" arg to "user_chosen_diet" and tweak algorithm to only 
+        # recommend recipes that match the user's chosen diet 
+        # function should return a list of recipes and user diet preference
+    
     recommended = []
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
     user_preferences_diet = {preference["diet"] for preference in user_preferences}
@@ -57,3 +62,5 @@ def recommend_recipes(available_ingredients, user_preferences):
             if details["diet"] in user_preferences_diet:
                 recommended.append({recipe: details})
     return recommended
+
+    # return recommended, user_chosen_diet
