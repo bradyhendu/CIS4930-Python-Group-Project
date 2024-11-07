@@ -1,6 +1,7 @@
 import input
 from recipes import recommend_recipes
 from output import write_output
+from visualize import visualize_nutrition
 
 #outside imports
 #import matplotlib.pyplot as plt
@@ -49,5 +50,5 @@ if __name__ == '__main__':
     write_output(meal_plan, shopping_list, "output.txt")
     
     #visualize data
-    
+    visualize_nutrition(meal_plan)
     
