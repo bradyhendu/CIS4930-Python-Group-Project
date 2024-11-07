@@ -7,8 +7,18 @@ from visualize import visualize_nutrition
 #import matplotlib.pyplot as plt
 
 def create_meal_plan(recommended_recipes, user_preferences):
-    #Creates a meal plan based on the recommended recipes and user preferences
-    pass
+    # Creates a meal plan based on the recommended recipes and user preferences
+    meal_plan = {"Monday":[], "Tuesday":[], "Wednesday":[], "Thursday":[], "Friday":[], "Saturday":[], "Sunday":[]}
+   
+    # for recipe in recommended_recipes:
+    #     print(recipe)
+        
+    # print(user_preferences)
+    
+    for day in meal_plan.keys():
+        meal_plan[day] = ["Add recipes here with algorithm"]
+    
+    return meal_plan
 
 def create_shopping_list(recommended_recipes, available_ingredients):
     #Loop through the recommended recipes and create a shopping list based on the missing ingredients
@@ -38,13 +48,13 @@ if __name__ == '__main__':
     preference_list = input.read_preferences("preferences.json")
     
     # Recommend recipes based on the available ingredients and user preferences
-    recommened_recipies = recommend_recipes(ingredient_list, preference_list)
+    recommended_recipes = recommend_recipes(ingredient_list, preference_list)
     
     #Creates a meal plan based on the recommended recipes and user preferences
-    meal_plan = create_meal_plan(recommened_recipies, preference_list)
+    meal_plan = create_meal_plan(recommended_recipes, preference_list)
     
     #Creates a shopping list based on the recommended recipes and available ingredients
-    shopping_list = create_shopping_list(recommened_recipies, ingredient_list)
+    shopping_list = create_shopping_list(recommended_recipes, ingredient_list)
     
     #Writes the meal plan and shopping list to a single output file
     write_output(meal_plan, shopping_list, "output.txt")
