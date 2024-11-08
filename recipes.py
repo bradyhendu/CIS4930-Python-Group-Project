@@ -2,17 +2,25 @@
 
 recipes = {
     "Pasta": {"ingredients": {"pasta": 100, "tomato": 50}, "diet": "vegetarian"},
-    "Chicken Salad": {"ingredients": {"chicken": 150, "lettuce": 50, "onion": 10}, "diet": "non-vegetarian"},
+    "Chicken Salad": {"ingredients": {"chicken": 150, "lettuce": 50, "onion": 10}, "diet": "regular"},
     "Fruit Smoothie": {"ingredients": {"banana": 1, "milk": 200}, "diet": "vegetarian"},
-    "Chicken Curry": {"ingredients": {"chicken": 200, "curry powder": 10}, "diet": "non-vegetarian"},
+    "Chicken Curry": {"ingredients": {"chicken": 200, "curry powder": 10}, "diet": "regular"},
     "Vegetable Stir Fry": {"ingredients": {"carrot": 50, "broccoli": 50}, "diet": "vegetarian"},
-    "Beef Stew": {"ingredients": {"beef": 200, "potato": 100}, "diet": "non-vegetarian"},
+    "Beef Stew": {"ingredients": {"beef": 200, "potato": 100}, "diet": "regular"},
     "Pancakes": {"ingredients": {"flour": 100, "egg": 1}, "diet": "vegetarian"},
     "Omelette": {"ingredients": {"egg": 2, "cheese": 20}, "diet": "vegetarian"},
     "Rice and Beans": {"ingredients": {"rice": 100, "beans": 100}, "diet": "vegetarian"},
-    "Tuna Sandwich": {"ingredients": {"tuna": 100, "bread": 50}, "diet": "non-vegetarian"},
+    "Tuna Sandwich": {"ingredients": {"tuna": 100, "bread": 50}, "diet": "regular"},
     "Grilled Cheese": {"ingredients": {"bread": 50, "cheese": 20}, "diet": "vegetarian"},
-    "Spaghetti Bolognese": {"ingredients": {"pasta": 100, "beef": 100}, "diet": "non-vegetarian"},
+    "Spaghetti Bolognese": {"ingredients": {"pasta": 100, "beef": 100}, "diet": "regular"},
+    "Keto Chicken": {"ingredients": {"chicken": 200, "olive oil": 20, "spinach": 50}, "diet": "keto"},
+    "Keto Salad": {"ingredients": {"lettuce": 100, "avocado": 50, "olive oil": 20}, "diet": "keto"},
+    "Vegan Tacos": {"ingredients": {"tortilla": 2, "black beans": 100, "avocado": 50}, "diet": "vegan"},
+    "Vegan Curry": {"ingredients": {"chickpeas": 150, "coconut milk": 100, "spinach": 50}, "diet": "vegan"},
+    "Keto Avocado Smoothie": {"ingredients": {"avocado": 1, "spinach": 50, "almond milk": 200}, "diet": "keto"},
+    "Keto Beef Stir Fry": {"ingredients": {"beef": 200, "broccoli": 100, "soy sauce": 20}, "diet": "keto"},
+    "Vegan Buddha Bowl": {"ingredients": {"quinoa": 100, "chickpeas": 100, "avocado": 50, "spinach": 50}, "diet": "vegan"},
+    "Vegan Lentil Soup": {"ingredients": {"lentils": 150, "carrot": 50, "celery": 50, "tomato": 100}, "diet": "vegan"},
 }
 
 recipe_nutrition = {
@@ -28,6 +36,14 @@ recipe_nutrition = {
     "Tuna Sandwich": {"calories": 400, "protein": 25, "carbs": 40, "fat": 15, "fiber": 3},
     "Grilled Cheese": {"calories": 300, "protein": 12, "carbs": 30, "fat": 15, "fiber": 2},
     "Spaghetti Bolognese": {"calories": 450, "protein": 25, "carbs": 50, "fat": 15, "fiber": 5},
+    "Keto Chicken": {"calories": 350, "protein": 40, "carbs": 5, "fat": 20, "fiber": 2},
+    "Keto Salad": {"calories": 300, "protein": 5, "carbs": 10, "fat": 25, "fiber": 8},
+    "Vegan Tacos": {"calories": 400, "protein": 12, "carbs": 50, "fat": 15, "fiber": 10},
+    "Vegan Curry": {"calories": 350, "protein": 15, "carbs": 40, "fat": 15, "fiber": 12},
+        "Keto Avocado Smoothie": {"calories": 250, "protein": 5, "carbs": 10, "fat": 20, "fiber": 8},
+    "Keto Beef Stir Fry": {"calories": 450, "protein": 35, "carbs": 10, "fat": 25, "fiber": 5},
+    "Vegan Buddha Bowl": {"calories": 400, "protein": 15, "carbs": 60, "fat": 15, "fiber": 12},
+    "Vegan Lentil Soup": {"calories": 300, "protein": 18, "carbs": 40, "fat": 5, "fiber": 15},
 }
 
 """
@@ -52,14 +68,12 @@ def recommend_recipes(available_ingredients, user_preferences):
     # TODO: switch "user_preferences" arg to "user_chosen_diet" and tweak algorithm to only 
         # recommend recipes that match the user's chosen diet 
         # function should return a list of recipes and user diet preference
-    
     recommended = []
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
-    user_preferences_diet = {preference["diet"] for preference in user_preferences}
     for recipe, details in recipes.items():
         matching_ingredients = sum(1 for ingredient in details["ingredients"] if ingredient in available_ingredient_names)
         if matching_ingredients >= len(details["ingredients"]) / 2:
-            if details["diet"] in user_preferences_diet:
+            if details["diet"] == user_preferences["diet"] or user_preferences["diet"] == "regular":
                 recommended.append({recipe: details})
     return recommended
 
