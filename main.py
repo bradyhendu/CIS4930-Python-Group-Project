@@ -1,6 +1,6 @@
 from input import read_ingredients, read_preferences
 from recipes import recommend_recipes
-from output import write_output
+from write_output import write_output
 from visualize import visualize_nutrition
 from create_meal_plan import create_meal_plan
 import sys

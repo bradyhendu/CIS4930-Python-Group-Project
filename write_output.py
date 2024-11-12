@@ -6,10 +6,9 @@ def write_output(meal_plan, shopping_list, output_file):
         for day, recipes in meal_plan.items():
             file.write(f"{day}:\n")
             if recipes:
-                for recipe in recipes:
-                    recipe_name = list(recipe.keys())[0]
+                for recipe_name in recipes:
                     file.write(f"  - {recipe_name}\n")
-                    ingredients = recipe[recipe_name].get("ingredients", {})
+                    ingredients = recipes[recipe_name].get("ingredients", {})
                     file.write("    Ingredients:\n")
                     for ingredient, quantity in ingredients.items():
                         file.write(f"      - {ingredient}: {quantity}\n")
