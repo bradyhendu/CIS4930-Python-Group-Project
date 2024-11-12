@@ -65,9 +65,6 @@ The function works as follows:
 """
 def recommend_recipes(available_ingredients, user_preferences):
      
-    # TODO: switch "user_preferences" arg to "user_chosen_diet" and tweak algorithm to only 
-        # recommend recipes that match the user's chosen diet 
-        # function should return a list of recipes and user diet preference
     recommended = []
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
     for recipe, details in recipes.items():
@@ -75,6 +72,5 @@ def recommend_recipes(available_ingredients, user_preferences):
         if matching_ingredients >= len(details["ingredients"]) / 2:
             if details["diet"] == user_preferences["diet"] or user_preferences["diet"] == "regular":
                 recommended.append({recipe: details})
-    return recommended
 
-    # return recommended, user_chosen_diet
+    return recommended
