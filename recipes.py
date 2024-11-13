@@ -66,11 +66,12 @@ The function works as follows:
 def recommend_recipes(available_ingredients, user_preferences):
      
     recommended = []
+    
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
     for recipe, details in recipes.items():
         matching_ingredients = sum(1 for ingredient in details["ingredients"] if ingredient in available_ingredient_names)
         if matching_ingredients >= len(details["ingredients"]) / 2:
             if details["diet"] == user_preferences["diet"] or user_preferences["diet"] == "regular":
-                recommended.append({recipe: details})
+                recommended.append({recipe: details, "nutrition": recipe_nutrition[recipe]})
 
     return recommended

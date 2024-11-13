@@ -1,19 +1,18 @@
-def write_output(meal_plan, shopping_list, output_file):
+def write_output(meal_plan, daily_nutrition, shopping_list, output_file):
     """Writes the meal plan and shopping list to a single output file."""
     with open(output_file, 'w') as file:
         # Writing the meal plan to the file
         file.write("Weekly Meal Plan:\n")
-        for day, recipes in meal_plan.items():
+        for day, nutrition in daily_nutrition:
+            
             file.write(f"{day}:\n")
-            if recipes:
-                for recipe_name in recipes:
-                    file.write(f"  - {recipe_name}\n")
-                    ingredients = recipes[recipe_name].get("ingredients", {})
-                    file.write("    Ingredients:\n")
-                    for ingredient, quantity in ingredients.items():
-                        file.write(f"      - {ingredient}: {quantity}\n")
+            file.write(f"\tNutrition: {nutrition}\n")
+            if day in meal_plan:
+                
+                for recipe_name in meal_plan[day]:
+                    file.write(f"\t- {recipe_name}\n")
             else:
-                file.write("  - No recipe assigned\n")
+                file.write("\t- No recipe assigned\n")
             file.write("\n")
         
         # Writing the shopping list to the file
