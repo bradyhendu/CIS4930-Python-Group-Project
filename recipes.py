@@ -40,7 +40,7 @@ recipe_nutrition = {
     "Keto Salad": {"calories": 300, "protein": 5, "carbs": 10, "fat": 25, "fiber": 8},
     "Vegan Tacos": {"calories": 400, "protein": 12, "carbs": 50, "fat": 15, "fiber": 10},
     "Vegan Curry": {"calories": 350, "protein": 15, "carbs": 40, "fat": 15, "fiber": 12},
-        "Keto Avocado Smoothie": {"calories": 250, "protein": 5, "carbs": 10, "fat": 20, "fiber": 8},
+    "Keto Avocado Smoothie": {"calories": 250, "protein": 5, "carbs": 10, "fat": 20, "fiber": 8},
     "Keto Beef Stir Fry": {"calories": 450, "protein": 35, "carbs": 10, "fat": 25, "fiber": 5},
     "Vegan Buddha Bowl": {"calories": 400, "protein": 15, "carbs": 60, "fat": 15, "fiber": 12},
     "Vegan Lentil Soup": {"calories": 300, "protein": 18, "carbs": 40, "fat": 5, "fiber": 15},
@@ -66,11 +66,13 @@ The function works as follows:
 def recommend_recipes(available_ingredients, user_preferences):
      
     recommended = []
+    print(user_preferences)
     
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
     for recipe, details in recipes.items():
         matching_ingredients = sum(1 for ingredient in details["ingredients"] if ingredient in available_ingredient_names)
         if matching_ingredients >= len(details["ingredients"]) / 2:
+            print(details["diet"])
             if details["diet"] == user_preferences["diet"] or user_preferences["diet"] == "regular":
                 recommended.append({recipe: details, "nutrition": recipe_nutrition[recipe]})
 
