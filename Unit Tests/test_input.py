@@ -47,7 +47,7 @@ if __name__ == '__main__':
     with open('test_results.txt', 'w') as f:
         # Create a test suite
         suite = unittest.TestLoader().loadTestsFromTestCase(TestInput)
-        # Run the tests and write the results to the file
+        # Run the tests and write the results to the file, verbosity means the level of detail in the output
         runner = unittest.TextTestRunner(stream=f, verbosity=2)
         runner.run(suite)
         
