@@ -24,26 +24,26 @@ recipes = {
 }
 
 recipe_nutrition = {
-    "Pasta": {"calories": 350, "protein": 12, "carbs": 60, "fat": 5, "fiber": 4},
-    "Chicken Salad": {"calories": 250, "protein": 30, "carbs": 10, "fat": 10, "fiber": 3},
-    "Fruit Smoothie": {"calories": 200, "protein": 6, "carbs": 40, "fat": 5, "fiber": 4},
-    "Chicken Curry": {"calories": 400, "protein": 35, "carbs": 20, "fat": 15, "fiber": 5},
-    "Vegetable Stir Fry": {"calories": 150, "protein": 5, "carbs": 20, "fat": 5, "fiber": 6},
-    "Beef Stew": {"calories": 500, "protein": 40, "carbs": 30, "fat": 20, "fiber": 4},
-    "Pancakes": {"calories": 300, "protein": 8, "carbs": 50, "fat": 10, "fiber": 2},
-    "Omelette": {"calories": 250, "protein": 18, "carbs": 2, "fat": 20, "fiber": 0},
-    "Rice and Beans": {"calories": 350, "protein": 12, "carbs": 60, "fat": 5, "fiber": 10},
-    "Tuna Sandwich": {"calories": 400, "protein": 25, "carbs": 40, "fat": 15, "fiber": 3},
-    "Grilled Cheese": {"calories": 300, "protein": 12, "carbs": 30, "fat": 15, "fiber": 2},
-    "Spaghetti Bolognese": {"calories": 450, "protein": 25, "carbs": 50, "fat": 15, "fiber": 5},
-    "Keto Chicken": {"calories": 350, "protein": 40, "carbs": 5, "fat": 20, "fiber": 2},
-    "Keto Salad": {"calories": 300, "protein": 5, "carbs": 10, "fat": 25, "fiber": 8},
-    "Vegan Tacos": {"calories": 400, "protein": 12, "carbs": 50, "fat": 15, "fiber": 10},
-    "Vegan Curry": {"calories": 350, "protein": 15, "carbs": 40, "fat": 15, "fiber": 12},
-    "Keto Avocado Smoothie": {"calories": 250, "protein": 5, "carbs": 10, "fat": 20, "fiber": 8},
-    "Keto Beef Stir Fry": {"calories": 450, "protein": 35, "carbs": 10, "fat": 25, "fiber": 5},
-    "Vegan Buddha Bowl": {"calories": 400, "protein": 15, "carbs": 60, "fat": 15, "fiber": 12},
-    "Vegan Lentil Soup": {"calories": 300, "protein": 18, "carbs": 40, "fat": 5, "fiber": 15},
+    "Pasta": {"calories": 900, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Chicken Salad": {"calories": 850, "protein": 45, "carbs": 40, "fat": 35, "fiber": 25},
+    "Fruit Smoothie": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Chicken Curry": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Vegetable Stir Fry": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Beef Stew": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Pancakes": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Omelette": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Rice and Beans": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Tuna Sandwich": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Grilled Cheese": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Spaghetti Bolognese": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Keto Chicken": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Keto Salad": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Vegan Tacos": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Vegan Curry": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Keto Avocado Smoothie": {"calories": 850, "protein": 40, "carbs": 120, "fat": 35, "fiber": 25},
+    "Keto Beef Stir Fry": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Vegan Buddha Bowl": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
+    "Vegan Lentil Soup": {"calories": 900, "protein": 45, "carbs": 120, "fat": 35, "fiber": 25},
 }
 
 """
@@ -72,7 +72,6 @@ def recommend_recipes(available_ingredients, user_preferences):
     for recipe, details in recipes.items():
         matching_ingredients = sum(1 for ingredient in details["ingredients"] if ingredient in available_ingredient_names)
         if matching_ingredients >= len(details["ingredients"]) / 2:
-            print(details["diet"])
             if details["diet"] == user_preferences["diet"] or user_preferences["diet"] == "regular":
                 recommended.append({recipe: details, "nutrition": recipe_nutrition[recipe]})
 
