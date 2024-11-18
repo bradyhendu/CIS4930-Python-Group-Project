@@ -77,6 +77,14 @@ if __name__ == '__main__':
     #Writes the meal plan and shopping list to a single output file
     write_output(meal_plan, daily_nutrition, shopping_list, "output.txt")
     
+    print("\nMeal plan and shopping list have been written to output.txt, please review that now.\n")
+    input = input("Would you like to visualize the nutrition data? (yes/no): ")
+    if input.lower() == "yes":
+        visualize = True
+    else:
+        visualize = False
+    
     #visualize data
-    visualize_nutrition(daily_nutrition)
+    if visualize:
+        visualize_nutrition(daily_nutrition)
     
