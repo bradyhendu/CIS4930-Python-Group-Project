@@ -1,6 +1,11 @@
 import unittest
 import json
 import os
+import sys
+
+# Add the parent directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from input import read_ingredients, read_preferences
 
 class TestInput(unittest.TestCase):
@@ -38,7 +43,13 @@ class TestInput(unittest.TestCase):
         self.assertEqual(result, expected_output)
         
 if __name__ == '__main__':
-        unittest.main()
+            # Open the output file in write mode
+    with open('test_results.txt', 'w') as f:
+        # Create a test suite
+        suite = unittest.TestLoader().loadTestsFromTestCase(TestInput)
+        # Run the tests and write the results to the file
+        runner = unittest.TextTestRunner(stream=f, verbosity=2)
+        runner.run(suite)
         
         
             
