@@ -66,7 +66,6 @@ The function works as follows:
 def recommend_recipes(available_ingredients, user_preferences):
      
     recommended = []
-    print(user_preferences)
     
     available_ingredient_names = {ingredient["name"] for ingredient in available_ingredients}
     for recipe, details in recipes.items():
