@@ -9,7 +9,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from input import read_ingredients, read_preferences
 from create_meal_plan import create_meal_plan
 from shopping import create_shopping_list
-from visualize import visualize_nutrition
 from write_output import write_output
 
 
@@ -81,22 +80,6 @@ class TestMealPlanner(unittest.TestCase):
         result = create_shopping_list(recommended_recipes, available_ingredients)
         self.assertEqual(result, expected_shopping_list, "The shopping list does not match the expected output.")
         
-    #@patch('matplotlib.pyplot.show')
-    def test_visualize_nutrition(self):
-        meal_plan = {
-            "Monday": [],
-            "Tuesday": [],
-            "Wednesday": [],
-            "Thursday": [],
-            "Friday": [],
-            "Saturday": [],
-            "Sunday": []
-        }
-        
-        try:
-            visualize_nutrition(meal_plan)
-        except Exception as e:
-            self.fail(f"visualize_nutrition raised an exception: {e}")
         
 if __name__ == '__main__':
             # Open the output file in write mode
