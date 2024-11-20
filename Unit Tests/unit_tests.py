@@ -47,7 +47,7 @@ class TestMealPlanner(unittest.TestCase):
         self.assertEqual(result, expected_output)
     
     def test_create_meal_plan(self):
-        recommended_recipes = [{'Pancakes': {'ingredients': {'flour': 100, 'egg': 1}, 'diet': 'vegetarian'}, 'nutrition': {'calories': 850, 'protein': 40, 'carbs': 120, 'fat': 35, 'fiber': 25}}]
+        recommended_recipes = [{'Pancakes': {'ingredients': {'flour': 100, 'egg': 1}, 'diet': 'vegetarian'}, 'nutrition': {'calories': 700, 'protein': 40, 'carbs': 120, 'fat': 35, 'fiber': 25}}]
         
         user_preferences = {'diet': 'regular', 'nutritional_goals': {'calories': 2200, 'protein': 70, 'carbs': 150, 'fat': 100}}
         
@@ -62,13 +62,13 @@ class TestMealPlanner(unittest.TestCase):
         }
 
         expected_daily_nutrition = [
-            ['Monday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Tuesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Wednesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Thursday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Friday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Saturday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
-            ['Sunday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}]
+            ['Monday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Tuesday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Wednesday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Thursday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Friday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Saturday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Sunday', {'calories': 2100, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}]
         ]
         
         result = create_meal_plan(recommended_recipes, user_preferences)
