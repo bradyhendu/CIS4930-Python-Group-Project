@@ -15,8 +15,8 @@ from write_output import write_output
 class TestMealPlanner(unittest.TestCase):
     
     def setUp(self):
-        self.cvs_file = 'ingredients.csv'
-        self.json_file = 'preferences.json'
+        self.cvs_file = 'test_ingredients.csv'
+        self.json_file = 'test_preferences.json'
     
         with open(self.cvs_file, 'w') as f:
             f.write("name,quantity,unit\n")

@@ -1,0 +1,39 @@
+test_create_meal_plan (__main__.TestMealPlanner.test_create_meal_plan) ... ERROR
+test_create_shopping_list (__main__.TestMealPlanner.test_create_shopping_list) ... FAIL
+test_read_ingredients (__main__.TestMealPlanner.test_read_ingredients) ... ok
+test_read_preferences (__main__.TestMealPlanner.test_read_preferences) ... ok
+
+======================================================================
+ERROR: test_create_meal_plan (__main__.TestMealPlanner.test_create_meal_plan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\brady\CIS4930-Python-Group-Project\Unit Tests\unit_tests.py", line 64, in test_create_meal_plan
+    result = create_meal_plan(recommended_recipes, user_preferences)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\brady\CIS4930-Python-Group-Project\create_meal_plan.py", line 36, in create_meal_plan
+    while not daily_totals_meet_goals(daily_totals) or daily_totals["calories"] < nutritional_goals["calories"]:
+                                                                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'calories'
+
+======================================================================
+FAIL: test_create_shopping_list (__main__.TestMealPlanner.test_create_shopping_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\brady\CIS4930-Python-Group-Project\Unit Tests\unit_tests.py", line 81, in test_create_shopping_list
+    self.assertEqual(result, expected_shopping_list, "The shopping list does not match the expected output.")
+AssertionError: Lists differ: [{'in[14 chars]our', 'quantity': 50}, {'ingredient': 'Milk', 'quantity': 200}] != [{'in[14 chars]our', 'quantiy': 50}, {'ingredient': 'Milk', 'quantity': 200}]
+
+First differing element 0:
+{'ingredient': 'Flour', 'quantity': 50}
+{'ingredient': 'Flour', 'quantiy': 50}
+
+- [{'ingredient': 'Flour', 'quantity': 50},
+?                                 -
+
++ [{'ingredient': 'Flour', 'quantiy': 50},
+   {'ingredient': 'Milk', 'quantity': 200}] : The shopping list does not match the expected output.
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.014s
+
+FAILED (failures=1, errors=1)
