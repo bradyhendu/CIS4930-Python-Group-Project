@@ -9,9 +9,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from input import read_ingredients, read_preferences
 from create_meal_plan import create_meal_plan
 from shopping import create_shopping_list
+from visualize import visualize_nutrition
+from write_output import write_output
 
 
-class TestInput(unittest.TestCase):
+class TestMealPlanner(unittest.TestCase):
     
     def setUp(self):
         self.cvs_file = 'ingredients.csv'
@@ -45,7 +47,7 @@ class TestInput(unittest.TestCase):
         result = read_preferences(self.json_file)
         self.assertEqual(result, expected_output)
         
-    class TestMainFunctions(unittest.TestCase):
+class TestMainFunctions(unittest.TestCase):
 
     def test_create_meal_plan(self):
         recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
