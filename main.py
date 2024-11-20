@@ -5,11 +5,19 @@ from visualize import visualize_nutrition
 from create_meal_plan import create_meal_plan
 from shopping import create_shopping_list
 import sys
+import os
 
 #outside imports
 #import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
+    
+    #Removes previous output file if it exists
+    try:
+        os.remove("output.txt")
+    except:
+        pass
+    
     
     # Read the ingredients and preferences from the input files
     ingredient_list = read_ingredients("ingredients.csv")
