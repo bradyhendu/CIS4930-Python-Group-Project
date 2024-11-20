@@ -46,9 +46,7 @@ class TestMealPlanner(unittest.TestCase):
         expected_output = ["vegetarian", "low_carb"]
         result = read_preferences(self.json_file)
         self.assertEqual(result, expected_output)
-        
-class TestMainFunctions(unittest.TestCase):
-
+    
     def test_create_meal_plan(self):
         recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
         
@@ -104,7 +102,7 @@ if __name__ == '__main__':
             # Open the output file in write mode
     with open('test_results.txt', 'w') as f:
         # Create a test suite
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestInput)
+        suite = unittest.TestLoader().loadTestsFromTestCase(TestMealPlanner)
         # Run the tests and write the results to the file, verbosity means the level of detail in the output
         runner = unittest.TextTestRunner(stream=f, verbosity=2)
         runner.run(suite)
