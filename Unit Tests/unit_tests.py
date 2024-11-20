@@ -7,12 +7,16 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from input import read_ingredients, read_preferences
+from create_meal_plan import create_meal_plan
+from shopping import create_shopping_list
+from write_output import write_output
 
-class TestInput(unittest.TestCase):
+
+class TestMealPlanner(unittest.TestCase):
     
     def setUp(self):
-        self.cvs_file = 'ingredients.csv'
-        self.json_file = 'preferences.json'
+        self.cvs_file = 'test_ingredients.csv'
+        self.json_file = 'test_preferences.json'
     
         with open(self.cvs_file, 'w') as f:
             f.write("name,quantity,unit\n")
@@ -41,12 +45,47 @@ class TestInput(unittest.TestCase):
         expected_output = ["vegetarian", "low_carb"]
         result = read_preferences(self.json_file)
         self.assertEqual(result, expected_output)
+    
+    def test_create_meal_plan(self):
+        recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
+        
+        user_preferences = {"Dietary Restrictions": "None"}
+        
+        expected_meal_plan = {
+            "Monday": [],
+            "Tuesday": [],
+            "Wednesday": [],
+            "Thursday": [],
+            "Friday": [],
+            "Saturday": [],
+            "Sunday": []
+        }
+        
+        result = create_meal_plan(recommended_recipes, user_preferences)
+        self.assertSetEqual(result, expected_meal_plan, "The meal plan does not math the expected structure.")
+        
+    def test_create_shopping_list(self):
+        recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
+        
+        available_ingredients = [
+            {"name": "Flour", "quantity": 50},
+            {"name": "Sugar", "quantity": 200}
+            ]
+        
+        expected_shopping_list = [
+            {"ingredient": "Flour", "quantiy": 50},
+            {"ingredient": "Milk", "quantity": 200}
+        ]
+        
+        result = create_shopping_list(recommended_recipes, available_ingredients)
+        self.assertEqual(result, expected_shopping_list, "The shopping list does not match the expected output.")
+        
         
 if __name__ == '__main__':
             # Open the output file in write mode
     with open('test_results.txt', 'w') as f:
         # Create a test suite
-        suite = unittest.TestLoader().loadTestsFromTestCase(TestInput)
+        suite = unittest.TestLoader().loadTestsFromTestCase(TestMealPlanner)
         # Run the tests and write the results to the file, verbosity means the level of detail in the output
         runner = unittest.TextTestRunner(stream=f, verbosity=2)
         runner.run(suite)
