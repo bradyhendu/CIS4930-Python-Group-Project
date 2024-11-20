@@ -137,6 +137,12 @@ if __name__ == '__main__':
     # Ensure the Unit Tests directory exists
     os.makedirs('Unit Tests', exist_ok=True)
     
+    #delete the output file if it exists
+    try:
+        os.remove('Unit Tests/test_results.txt')
+    except:
+        pass
+    
     # Open the output file in write mode
     with open('Unit Tests/test_results.txt', 'w') as f:
         # Create a test suite
