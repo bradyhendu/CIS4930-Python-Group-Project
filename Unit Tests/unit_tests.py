@@ -47,48 +47,102 @@ class TestMealPlanner(unittest.TestCase):
         self.assertEqual(result, expected_output)
     
     def test_create_meal_plan(self):
-        recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
+        recommended_recipes = [{'Pancakes': {'ingredients': {'flour': 100, 'egg': 1}, 'diet': 'vegetarian'}, 'nutrition': {'calories': 850, 'protein': 40, 'carbs': 120, 'fat': 35, 'fiber': 25}}]
         
-        user_preferences = {"Dietary Restrictions": "None"}
+        user_preferences = {'diet': 'regular', 'nutritional_goals': {'calories': 2200, 'protein': 70, 'carbs': 150, 'fat': 100}}
         
         expected_meal_plan = {
-            "Monday": [],
-            "Tuesday": [],
-            "Wednesday": [],
-            "Thursday": [],
-            "Friday": [],
-            "Saturday": [],
-            "Sunday": []
+            'Monday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Tuesday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Wednesday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Thursday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Friday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Saturday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Sunday': ['Pancakes', 'Pancakes', 'Pancakes']
         }
+
+        expected_daily_nutrition = [
+            ['Monday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Tuesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Wednesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Thursday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Friday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Saturday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Sunday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}]
+        ]
         
         result = create_meal_plan(recommended_recipes, user_preferences)
-        self.assertSetEqual(result, expected_meal_plan, "The meal plan does not math the expected structure.")
+        self.assertEqual(result, (expected_meal_plan, expected_daily_nutrition), "The meal plan does not match the expected structure.")
         
     def test_create_shopping_list(self):
-        recommended_recipes = [{"Pancakes": {"ingredients": {"Flour": 100, "Milk": 200}}}]
+        recommended_recipes = [{'Pancakes': {'ingredients': {'flour': 100, 'egg': 1}, 'diet': 'vegetarian'}, 'nutrition': {'calories': 850, 'protein': 40, 'carbs': 120, 'fat': 35, 'fiber': 25}}]
         
         available_ingredients = [
-            {"name": "Flour", "quantity": 50},
-            {"name": "Sugar", "quantity": 200}
-            ]
+            {"name": "flour", "quantity": 50},
+            {"name": "fugar", "quantity": 200}
+        ]
         
         expected_shopping_list = [
-            {"ingredient": "Flour", "quantiy": 50},
-            {"ingredient": "Milk", "quantity": 200}
+            {"ingredient": "flour", "quantity": 50},
+            {"ingredient": "egg", "quantity": 1}
         ]
+    
         
         result = create_shopping_list(recommended_recipes, available_ingredients)
         self.assertEqual(result, expected_shopping_list, "The shopping list does not match the expected output.")
+    
+    def test_write_output(self):
+        meal_plan = {
+            'Monday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Tuesday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Wednesday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Thursday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Friday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Saturday': ['Pancakes', 'Pancakes', 'Pancakes'],
+            'Sunday': ['Pancakes', 'Pancakes', 'Pancakes']
+        }
+
+        daily_nutrition = [
+            ['Monday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Tuesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Wednesday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Thursday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Friday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Saturday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}],
+            ['Sunday', {'calories': 2550, 'protein': 120, 'carbs': 360, 'fat': 105, 'fiber': 75}]
+        ]
+
+        shopping_list = [
+            {"ingredient": "flour", "quantity": 50},
+            {"ingredient": "egg", "quantity": 1}
+        ]
+
+        output_file = 'test_output.txt'
+        
+        # Call the function to write the output
+        write_output(meal_plan, daily_nutrition, shopping_list, output_file)
+        
+        # Read the contents of the output file
+        with open(output_file, 'r') as file:
+            output_content = file.read()
+        
+        #If this fails, we know the function did not write anything to the file, as in it failed
+        self.assertIsNotNone(output_content, "The output file is empty.")
+        
+        # Clean up the output file
+        os.remove(output_file)
         
         
 if __name__ == '__main__':
-            # Open the output file in write mode
-    with open('test_results.txt', 'w') as f:
+    # Ensure the Unit Tests directory exists
+    os.makedirs('Unit Tests', exist_ok=True)
+    
+    # Open the output file in write mode
+    with open('Unit Tests/test_results.txt', 'w') as f:
         # Create a test suite
         suite = unittest.TestLoader().loadTestsFromTestCase(TestMealPlanner)
         # Run the tests and write the results to the file, verbosity means the level of detail in the output
         runner = unittest.TextTestRunner(stream=f, verbosity=2)
         runner.run(suite)
-        
         
             

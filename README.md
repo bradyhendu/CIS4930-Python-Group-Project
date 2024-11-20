@@ -14,8 +14,15 @@ analysis.
 6. View the nutrional analysis via the PDF that appears in a browser.
 
 # How to use the Project
+
 1. Run the application using `python app.py`.
 2. Make sure all ingredients you have are in the pantry, and is up to date with current amounts.
 3. Consider what diet you would like to follow for the week
 4. Analyze the nutritional information of the meal plan
+
+# How to run the tests
+
+1. Ensure you are in the Unit Tests directory
+2. Run the tests using `python unit_tests.py`
+3. View the results in `test_results.txt`
 

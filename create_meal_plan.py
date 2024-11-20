@@ -14,7 +14,7 @@ def create_meal_plan(recommended_recipes,  user_diet):
     }
 
     nutritional_goals = user_diet.get("nutritional_goals", {}) # {'calories': 1500, 'protein': 75, 'carbs': 50, 'fat': 100}
-
+    
     def daily_totals_meet_goals(daily_totals):
         for nutrient, goal in nutritional_goals.items():
             if nutrient == "calorie" and goal - 200 <= nutrient: # Allow a 200 calorie margin of error

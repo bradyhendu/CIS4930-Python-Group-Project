@@ -1,7 +1,10 @@
-test_read_ingredients (__main__.TestInput.test_read_ingredients) ... ok
-test_read_preferences (__main__.TestInput.test_read_preferences) ... ok
+test_create_meal_plan (__main__.TestMealPlanner.test_create_meal_plan) ... ok
+test_create_shopping_list (__main__.TestMealPlanner.test_create_shopping_list) ... ok
+test_read_ingredients (__main__.TestMealPlanner.test_read_ingredients) ... ok
+test_read_preferences (__main__.TestMealPlanner.test_read_preferences) ... ok
+test_write_output (__main__.TestMealPlanner.test_write_output) ... ok
 
 ----------------------------------------------------------------------
-Ran 2 tests in 0.005s
+Ran 5 tests in 0.005s
 
 OK
