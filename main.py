@@ -40,6 +40,11 @@ if __name__ == '__main__':
     #Creates a meal plan based on the recommended recipes and user preferences
     meal_plan, daily_nutrition = create_meal_plan(recommended_recipes, user_chosen_diet)
   
+    #If no is generated, exit the program
+    if(meal_plan == None):
+        print("No recipes found for the given preferences. Please try again with different preferences or more ingredients.")
+        sys.exit(1)
+        
     #Creates a shopping list based on the recommended recipes and available ingredients
     shopping_list = create_shopping_list(recommended_recipes, ingredient_list)
     
